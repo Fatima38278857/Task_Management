@@ -1,7 +1,9 @@
 package com.example.program.Task_Management.mapper;
 
+
 import com.example.program.Task_Management.dto.TaskDTO;
 import com.example.program.Task_Management.entity.TaskEntity;
+import com.example.program.Task_Management.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;

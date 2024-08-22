@@ -18,6 +18,8 @@ public class Register {
     private String username;
     @Column(name = "password", nullable = false)
     private String password;
+    @OneToOne(mappedBy = "register")
+    private UserEntity userEntity;
 
     public Register(String username, String password) {
         this.username = username;

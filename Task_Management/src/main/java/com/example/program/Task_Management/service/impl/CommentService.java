@@ -9,9 +9,9 @@ import java.util.List;
 public interface CommentService {
     List<CommentDTO> getAllComment(long taskId);
 
-    CommentDTO createComment(long task_Id, CommentEntity comment);
 
     void deleteComment(long task_Id, long comment_Id);
+    CommentEntity saveComment(CommentEntity comment);
+    CommentDTO updateCommentId(long task_Id, long comment_Id, CreateOrUpdateComment createOrUpdateComment);
 
-    CommentDTO patchCommentId(long task_Id, long comment_Id, CreateOrUpdateComment createOrUpdateComment);
 }

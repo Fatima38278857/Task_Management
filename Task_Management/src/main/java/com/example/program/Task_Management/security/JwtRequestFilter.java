@@ -39,6 +39,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         // Исключение Swagger URL из фильтрации
         if (requestUri.startsWith("/swagger-ui") ||
                 requestUri.startsWith("/v3/api-docs") ||
+                requestUri.startsWith("/register") ||
+                requestUri.startsWith("/create") ||
                 requestUri.startsWith("/swagger-resources") ||
                 requestUri.startsWith("/webjars")) {
             chain.doFilter(request, response);

@@ -1,16 +1,18 @@
 package com.example.program.Task_Management.entity;
 
 import com.example.program.Task_Management.enumm.Role;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 
 @Entity
@@ -24,22 +26,39 @@ public class UserEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "users_id")
     private Long id;
+
+    @Getter
     @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private String password;
-    @Column(name = "user_name")
     private String username;
+
+    @OneToOne
+    @JoinColumn(name = "register_id", referencedColumnName = "id")
+    @JsonIgnore
+    private Register register;
+
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<TaskEntity> taskEntity;
     @OneToOne
     @JoinColumn(name = "task_id")
     private TaskEntity currentTask;
 
+
+
+    public UserEntity(String email, Role role, Register register) {
+        this.email = email;
+        this.register = register;
+        this.role = role;
+        this.username = username;
+        this.taskEntity = new ArrayList<>();  // Инициализация пустого списка задач
+        this.currentTask = currentTask; // Задача назначена при создании
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -47,26 +66,38 @@ public class UserEntity implements UserDetails {
     }
 
     @Override
+    @JsonIgnore
+    public String getPassword() {
+        return "";
+    }
+
+
+    @Override
+    @JsonIgnore
     public String getUsername() {
         return "";
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
         return UserDetails.super.isAccountNonExpired();
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
         return UserDetails.super.isAccountNonLocked();
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return UserDetails.super.isCredentialsNonExpired();
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return UserDetails.super.isEnabled();
     }
