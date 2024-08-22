@@ -34,20 +34,30 @@
   - Postman
 
 **После запуска приложения, оно будет доступно по адресу**
-http://localhost:8080.
-**Быстрый набор запросов в postman:**
-**Регистрация пользователя**
-POST - http://localhost:8080/authenticate/register
-**Аутентификация пользователя**
-POST - http://localhost:8080/authenticate/create
-**Создание учетных данных**
-POST - http://localhost:8080/users/createProfile
-**Создание задачи**
-POST - http://localhost:8080/task/add?userId=1
-**Назначение исполнителя**
-POST - http://localhost:8080/task/assign-task
-**Получить задачи конкретного автора  а также все комментарии к ним.**
-GET - http://localhost:8080/task/user/1
-**Конфигурация**
-Настройки базы данных и другие конфигурации можно изменить в файле application.properties.
-**Основной разработчик - Аксагова Фатима**
+ [http://localhost:8080](http://localhost:8080).
+
+## Быстрый набор запросов в Postman
+
+### Регистрация пользователя
+`POST - http://localhost:8080/authenticate/register`
+
+### Аутентификация пользователя
+`POST - http://localhost:8080/authenticate/create`
+
+### Создание учетных данных
+`POST - http://localhost:8080/users/createProfile`
+
+### Создание задачи
+`POST - http://localhost:8080/task/add?userId=1`
+
+### Назначение исполнителя
+`POST - http://localhost:8080/task/assign-task`
+
+### Получить задачи конкретного автора а также все комментарии к ним
+`GET - http://localhost:8080/task/user/1`
+
+## Конфигурация
+Настройки базы данных и другие конфигурации можно изменить в файле `application.properties`.
+
+## Основной разработчик
+Аксагова Фатима
